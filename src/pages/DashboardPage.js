@@ -70,12 +70,13 @@ const DashboardPage = () => {
     dispatch(getAds());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (ads && user) {
-      const filteredAds = ads.filter(ad => ad.seller.id === user.user.id);
-      setUserAds(filteredAds);
-    }
-  }, [ads, user]);
+useEffect(() => {
+  if (ads && user) {
+    const filteredAds = ads.filter(ad => ad.seller.id === user.user.id);
+    console.log('User:', user, 'Filtered ads:', filteredAds);
+    setUserAds(filteredAds);
+  }
+}, [ads, user]);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -85,9 +86,10 @@ const DashboardPage = () => {
     navigate('/create-ad');
   };
 
-  const handleEditAd = (id) => {
-    navigate(`/edit-ad/${id}`);
-  };
+const handleEditAd = (id) => {
+  console.log('Edit ad id:', id);
+  navigate(`/ads/${id}/edit`);
+};
 
   const handleDeleteAd = (id) => {
     if (window.confirm('Sei sicuro di voler eliminare questo annuncio?')) {

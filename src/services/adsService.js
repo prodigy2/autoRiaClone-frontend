@@ -12,6 +12,8 @@ const getAds = async () => {
 // Ottieni un annuncio specifico
 const getAdById = async (id) => {
   const response = await axios.get(API_URL + id);
+  console.log('ID passato a getAdById:', id);
+  console.log('response.data :', response.data);
   return response.data;
 };
 

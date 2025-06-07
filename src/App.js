@@ -12,6 +12,7 @@ import CreateAdPage from './pages/CreateAdPage';
 import DashboardPage from './pages/DashboardPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import EditAdPage from './pages/EditAdPage';
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
               <CreateAdPage />
             </ProtectedRoute>
           } />
+      <Route path="/ads/:id/edit" element={
+        <ProtectedRoute>
+          <EditAdPage />
+        </ProtectedRoute>
+      } />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Box>
