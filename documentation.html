@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentazione AutoRia Clone</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #1976d2;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .screenshot {
+      max-width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>AutoRia Clone - Documentazione</h1>
+    <p>Sistema completo di vendita auto con backend NestJS/TypeORM e frontend React</p>
+  </div>
+
+  <div class="section">
+    <h2>Panoramica del Progetto</h2>
+    <p>
+      AutoRia Clone è un'applicazione web completa per la vendita di automobili, ispirata alla piattaforma AutoRia. 
+      Il sistema è composto da un backend sviluppato con NestJS e TypeORM, e un frontend sviluppato con React.
+    </p>
+    <p>
+      L'applicazione supporta diverse tipologie di utenti (Acquirenti, Venditori, Manager, Amministratori) e 
+      tipi di account (Base e Premium), con funzionalità differenziate per ciascuno.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Architettura del Sistema</h2>
+    <h3>Backend (NestJS/TypeORM)</h3>
+    <p>
+      Il backend è sviluppato utilizzando NestJS, un framework per la creazione di applicazioni server-side 
+      efficienti e scalabili in Node.js, insieme a TypeORM per la gestione del database.
+    </p>
+    <h4>Caratteristiche principali:</h4>
+    <ul>
+      <li>Architettura modulare con separazione delle responsabilità</li>
+      <li>Sistema di ruoli e permessi flessibile (RBAC)</li>
+      <li>Autenticazione e autorizzazione con JWT</li>
+      <li>Validazione automatica degli annunci</li>
+      <li>Supporto multi-valuta con aggiornamento quotidiano dei tassi</li>
+      <li>Containerizzazione con Docker per facile deployment</li>
+    </ul>
+
+    <h3>Frontend (React)</h3>
+    <p>
+      Il frontend è sviluppato con React, utilizzando Material-UI per l'interfaccia utente, Redux per la gestione dello stato 
+      e React Router per la navigazione.
+    </p>
+    <h4>Caratteristiche principali:</h4>
+    <ul>
+      <li>Interfaccia utente moderna e responsive</li>
+      <li>Gestione centralizzata dello stato con Redux</li>
+      <li>Autenticazione e autorizzazione basata su token JWT</li>
+      <li>Ricerca avanzata degli annunci</li>
+      <li>Dashboard utente per la gestione degli annunci</li>
+      <li>Visualizzazione dettagliata degli annunci</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Requisiti di Sistema</h2>
+    <h3>Per lo sviluppo e l'esecuzione locale:</h3>
+    <ul>
+      <li>Node.js (v16 o superiore)</li>
+      <li>npm o yarn</li>
+      <li>Docker e Docker Compose</li>
+      <li>PostgreSQL (se non si utilizza Docker)</li>
+    </ul>
+    <h3>Per il deployment:</h3>
+    <ul>
+      <li>Server con supporto per Docker</li>
+      <li>AWS o altro provider cloud (opzionale)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Installazione e Configurazione</h2>
+    <h3>Backend</h3>
+    <pre>
+# Clonare il repository
+git clone [repository-url]
+cd autoRiaClone
+
+# Installare le dipendenze
+npm install
+
+# Configurare le variabili d'ambiente
+cp .env.example .env
+# Modificare il file .env con i propri valori
+
+# Avviare con Docker
+docker-compose up -d
+
+# Oppure avviare in modalità sviluppo
+npm run start:dev
+    </pre>
+
+    <h3>Frontend</h3>
+    <pre>
+# Navigare nella directory del frontend
+cd autoRiaClone-frontend
+
+# Installare le dipendenze
+npm install
+
+# Avviare in modalità sviluppo
+npm start
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>Struttura del Progetto</h2>
+    <h3>Backend</h3>
+    <pre>
+autoRiaClone/
+├── src/
+│   ├── auth/           # Autenticazione e autorizzazione
+│   ├── users/          # Gestione utenti
+│   ├── roles/          # Gestione ruoli e permessi
+│   ├── cars/           # Gestione marche e modelli auto
+│   ├── ads/            # Gestione annunci
+│   ├── currency/       # Gestione valute e tassi di cambio
+│   ├── notifications/  # Sistema di notifiche
+│   ├── app.module.ts   # Modulo principale
+│   └── main.ts         # Punto di ingresso
+├── docker/             # Configurazione Docker
+├── config/             # File di configurazione
+├── test/               # Test unitari e e2e
+└── docs/               # Documentazione
+    </pre>
+
+    <h3>Frontend</h3>
+    <pre>
+autoRiaClone-frontend/
+├── src/
+│   ├── components/     # Componenti riutilizzabili
+│   │   ├── layout/     # Componenti di layout (Header, Footer)
+│   │   └── auth/       # Componenti di autenticazione
+│   ├── pages/          # Pagine dell'applicazione
+│   ├── services/       # Servizi per le chiamate API
+│   ├── store/          # Store Redux e slice
+│   ├── utils/          # Utility e helper
+│   ├── hooks/          # Custom hooks
+│   ├── assets/         # Asset statici
+│   ├── App.js          # Componente principale
+│   └── index.js        # Punto di ingresso
+└── public/             # File pubblici
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>API Endpoints</h2>
+    <p>
+      Il backend espone una serie di API RESTful per l'interazione con il frontend. 
+      La documentazione completa delle API è disponibile tramite Swagger all'indirizzo <code>http://localhost:3000/api</code> 
+      quando l'applicazione è in esecuzione.
+    </p>
+    <h3>Principali endpoint:</h3>
+    <table>
+      <tr>
+        <th>Endpoint</th>
+        <th>Metodo</th>
+        <th>Descrizione</th>
+      </tr>
+      <tr>
+        <td>/auth/register</td>
+        <td>POST</td>
+        <td>Registrazione nuovo utente</td>
+      </tr>
+      <tr>
+        <td>/auth/login</td>
+        <td>POST</td>
+        <td>Login utente</td>
+      </tr>
+      <tr>
+        <td>/users</td>
+        <td>GET</td>
+        <td>Elenco utenti (richiede autenticazione)</td>
+      </tr>
+      <tr>
+        <td>/cars/brands</td>
+        <td>GET</td>
+        <td>Elenco marche auto</td>
+      </tr>
+      <tr>
+        <td>/cars/brands/:id/models</td>
+        <td>GET</td>
+        <td>Elenco modelli per marca</td>
+      </tr>
+      <tr>
+        <td>/ads</td>
+        <td>GET</td>
+        <td>Elenco annunci</td>
+      </tr>
+      <tr>
+        <td>/ads</td>
+        <td>POST</td>
+        <td>Creazione nuovo annuncio (richiede autenticazione)</td>
+      </tr>
+      <tr>
+        <td>/ads/:id</td>
+        <td>GET</td>
+        <td>Dettaglio annuncio</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Funzionalità Principali</h2>
+    <h3>Sistema di Ruoli e Permessi</h3>
+    <p>
+      L'applicazione implementa un sistema di controllo degli accessi basato su ruoli (RBAC) con quattro ruoli principali:
+    </p>
+    <ul>
+      <li><strong>Acquirente:</strong> Può visualizzare annunci e contattare venditori</li>
+      <li><strong>Venditore:</strong> Può creare, modificare ed eliminare i propri annunci</li>
+      <li><strong>Manager:</strong> Può gestire annunci e utenti</li>
+      <li><strong>Amministratore:</strong> Ha accesso completo a tutte le funzionalità</li>
+    </ul>
+
+    <h3>Tipi di Account</h3>
+    <p>
+      Sono disponibili due tipi di account con funzionalità differenziate:
+    </p>
+    <ul>
+      <li><strong>Base:</strong> Limitato a un solo annuncio attivo</li>
+      <li><strong>Premium:</strong> Annunci illimitati e accesso a statistiche avanzate</li>
+    </ul>
+
+    <h3>Gestione Annunci</h3>
+    <p>
+      Gli utenti possono creare, modificare, eliminare e visualizzare annunci di auto. 
+      Gli annunci includono informazioni dettagliate sul veicolo, immagini e dati di contatto del venditore.
+    </p>
+
+    <h3>Ricerca Avanzata</h3>
+    <p>
+      Il sistema offre funzionalità di ricerca avanzata per trovare veicoli in base a marca, modello, 
+      prezzo, anno, chilometraggio e altre caratteristiche.
+    </p>
+
+    <h3>Supporto Multi-valuta</h3>
+    <p>
+      I prezzi possono essere visualizzati in diverse valute, con tassi di cambio aggiornati quotidianamente.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Guida all'Uso</h2>
+    <h3>Per gli Acquirenti</h3>
+    <ol>
+      <li>Registrarsi o accedere con un account esistente</li>
+      <li>Utilizzare la ricerca per trovare veicoli di interesse</li>
+      <li>Visualizzare i dettagli degli annunci</li>
+      <li>Contattare i venditori per maggiori informazioni</li>
+    </ol>
+
+    <h3>Per i Venditori</h3>
+    <ol>
+      <li>Registrarsi o accedere con un account esistente</li>
+      <li>Accedere alla dashboard</li>
+      <li>Creare un nuovo annuncio con i dettagli del veicolo</li>
+      <li>Gestire gli annunci esistenti (modifica, eliminazione)</li>
+      <li>Rispondere alle richieste degli acquirenti</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>Sviluppi Futuri</h2>
+    <p>
+      Il progetto è stato progettato per supportare future espansioni, tra cui:
+    </p>
+    <ul>
+      <li>Integrazione con concessionarie auto</li>
+      <li>Sistema di recensioni e valutazioni</li>
+      <li>Funzionalità di confronto veicoli</li>
+      <li>Integrazione con servizi di finanziamento</li>
+      <li>App mobile per iOS e Android</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Supporto e Contatti</h2>
+    <p>
+      Per assistenza o informazioni aggiuntive, contattare il team di sviluppo all'indirizzo 
+      <a href="mailto:support@autoria-clone.com">support@autoria-clone.com</a>.
+    </p>
+  </div>
+
+  <div class="footer" style="margin-top: 50px; text-align: center; color: #777; font-size: 0.9em;">
+    <p>© 2025 AutoRia Clone. Tutti i diritti riservati.</p>
+  </div>
+</body>
+</html>
